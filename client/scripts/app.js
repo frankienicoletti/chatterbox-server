@@ -1,8 +1,7 @@
-// // YOUR CODE HERE:
 var app = {
   rooms: {},
 
-  server: "https://api.parse.com/1/classes/chatterbox",
+  server: "http://127.0.0.1:3000/classes/messages",
 
   friends: {},
 
@@ -35,16 +34,21 @@ var app = {
       url: context.server,
       type: 'GET',
       contentType: 'application/json',
-      data: "order=-createdAt",
+      //data: "order=-createdAt",
       success: function (data) {
+        var parsedData = JSON.parse(data);
         console.log('chatterbox: Message received');
-        context.readMessages(data);
+        context.readMessages(parsedData);
+
       },
       error: function (data) {
         // see: https://developer.mozilla.org/en-US/docs/Web/API/console.error
         console.error('chatterbox: Failed to get message');
       }
     });
+    //console.log(this.data);
+    //this.data = JSON.stringify(this.data);
+    //this.data = JSON.parse(this.data);
   },
 
   clearMessages: function() {
