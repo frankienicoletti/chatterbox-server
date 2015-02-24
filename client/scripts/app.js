@@ -124,6 +124,10 @@ var app = {
 
 $(document).ready(function() {
   app.init();
+  $('#submit').on('click', function() {
+    var msg = $('#text').val();
+    app.send(msg);
+  });
 });
 
 

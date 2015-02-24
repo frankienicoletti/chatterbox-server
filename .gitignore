@@ -41,3 +41,10 @@ node_modules
 
 ### config ###
 .client/env/config.js
+
+### .flooignore ***
+.flooignore
+.floo
+
+### gitignore ###
+.gitignore
