@@ -56,7 +56,7 @@ exports.requestHandler = function(request, response) {
     if ( request.url === "/classes/messages" && request.method === 'POST' ) {
       request.on('data', function(chunk) {
         console.log(chunk, 'chunk');
-        text += chunk.toString();
+        text += chunk;
       });
       console.log(text);
 
