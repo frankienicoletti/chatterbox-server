@@ -40,7 +40,6 @@ $(document).ready(function(){
       //contentType: 'application/json',
       dataType: 'json',
       success: function (data) {
-        console.log('This is ',data);
         displayMessagesAndRooms(data);
         //set rooms
       },
@@ -110,7 +109,6 @@ $(document).ready(function(){
     var $divHolder = newMessageIterator(arrayOfData);
     var divHolderContents = $divHolder.html();
     $('.message_display').append(divHolderContents);
-    console.log($('.message_display').children());
     if( arrayOfData[0] ) {
       //console.log("arrayOfData true", arrayOfData[length-1]);
       latestMessageDate = arrayOfData[length-1].createdAt;
@@ -118,7 +116,6 @@ $(document).ready(function(){
     } else {
       //console.log("arrayOfData false", arrayOfData[0]);
     }
-    console.log($('.message_display').children());
     if( $('.message_display').children().length === 0 ) {
       $('.message_display').text('Sorry, no messages to display');
     }
