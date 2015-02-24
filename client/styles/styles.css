@@ -1,5 +1,5 @@
 body {
-    background: #E9820F;
+    background: #eee;
     text-align: center;
     padding: 0 25px;
     font-family: arial, sans-serif;
@@ -7,43 +7,23 @@ body {
 
 #main {
     width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 40px;
+    margin: auto;
     text-align: left;
     background: white;
-    padding: 5px 60px 50px 60px;
+    padding: 50px 60px;
     border: solid #ddd;
     border-width: 0 1px 1px 1px;
 }
 
-header {
-    text-align: left;
-    width: 500px;
-    margin: auto;
-}
-
-header h1 {
-    color: #0F75E9;
-    /*display: inline;*/
+#main h1 {
     margin-top: 0;
     font-size: 35px;
     margin-bottom: 5px;
-    padding: 5px 0;
-    text-align: left;
+    padding: 5px;
 }
 
-header h1 span {
+#main h1 span {
     font-style:italic;
-}
-
-.user-name {
-    float:left;
-}
-
-.select-room {
-    float:right;
-    margin-top:5px;
 }
 
 #main ul {
@@ -85,11 +65,10 @@ form input[type=text] {
     background-color: #eee;
 }
 
-.chat .username {
-    font-weight: 800;
+.messages{
 }
 
-.chat:hover {
+.messages {
     background-color: #ddd;
 }
 
@@ -103,54 +82,24 @@ form input[type=text] {
     padding: 10px;
 }
 
-.message_display {
-    height: 450px;
-    overflow-y: scroll;
+.user {
+    float: left;
+
 }
 
-.chat-as {
-    color: #333333;
+.msgText {
+    float: right;
 }
 
-.this-user {
-    color: #1994C3;
-    font-size: 1.3em;
+.time{
+    float: left;
+    margin-left: 20px;
+}
+
+.roomButton {
+    padding: 5px;
+}
+
+.friend{
     font-weight: bold;
 }
-
-.message-user {
-    color: #1994C3;
-    font-size: 1.1em;
-}
-.message-user:hover {
-    cursor: pointer;
-}
-.message-date {
-   color: #333333;
-   font-weight: bold;
-   font-size: 0.9em;
-}
-.message-text {
-  color: #333333;
-  font-size: 0.9em;
-}
-
-textarea {
-    margin: 20px 0 0 0;
-}
-.new-room-text {
-    color: #333333;
-    font-size: 0.9em;
-    font-weight: bold;
-}
-.optional-room {
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: #eaeaea;
-    border-radius: 3px;
-}
-.bold-user {
-    font-weight: bold;
-}
-
-
