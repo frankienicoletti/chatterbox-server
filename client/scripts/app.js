@@ -1,16 +1,12 @@
 var app = {
   rooms: {},
-
   server: "http://127.0.0.1:3000/classes/messages",
-
   friends: {},
-
   init: function(){
     $('body').append('<div class="rooms" id="roomSelect"></div>');
     $('body').append('<div class="messages" id="chats"></div>');
     app.fetch();
   },
-
   send: function(message){
     var context = this;
     $.ajax({
@@ -20,25 +16,23 @@ var app = {
       contentType: 'application/json',
       success: function (data) {
         console.log('chatterbox: Message sent');
+        this.fetch();
       },
       error: function (data) {
         console.error('chatterbox: Failed to send message');
       }
     });
   },
-
   fetch: function() {
     var context = this;
     $.ajax({
-      // always use this url
       url: context.server,
       type: 'GET',
       contentType: 'application/json',
       //data: "order=-createdAt",
       success: function (data) {
-        var parsedData = JSON.parse(data);
         console.log('chatterbox: Message received');
-        context.readMessages(parsedData);
+        context.readMessages(data);
 
       },
       error: function (data) {
@@ -46,15 +40,10 @@ var app = {
         console.error('chatterbox: Failed to get message');
       }
     });
-    //console.log(this.data);
-    //this.data = JSON.stringify(this.data);
-    //this.data = JSON.parse(this.data);
   },
-
   clearMessages: function() {
     $(".messages").empty();
   },
-
   addMessage: function(message){
     if (!message['updatedAt']) {
       message['updatedAt'] = new Date().toISOString();
@@ -85,26 +74,20 @@ var app = {
     msgBox.append("<br>");
     $(".messages").append(msgBox);
   },
-
-  readMessages: function(messageObj){
+  readMessages: function(messageObj, addRoom) {
+    addRoom = addRoom || false;
     var messages = messageObj['results'];
+    if (addRoom) {
+      this.addMessage(messages[0]);
+    }
     for (var i = 0; i < messages.length ; i++){
       this.addMessage(messages[i]);
     }
   },
-  readMessages1: function(messageObj){
-    var messages = messageObj['results'];
-    this.addMessage(messages[0]);
-    for (var i = 0; i < messages.length ; i++){
-      this.addMessage(messages[i]);
-    }
-  },
-
   getUserName: function(URL) {
     var start = URL.search("username") + 9;
     return URL.slice(start);
   },
-
   addRoom: function(roomname) {
     var context = this;
     if (!this.rooms[roomname]) {
@@ -115,7 +98,7 @@ var app = {
       room.on('click',function(room){
         var array = context.rooms[roomname];
         context.clearMessages();
-        context.readMessages1({'results':array});
+        context.readMessages({'results':array}, true);
       });
     }
   }
@@ -126,6 +109,7 @@ $(document).ready(function() {
   app.init();
   $('#submit').on('click', function() {
     var msg = $('#text').val();
+    console.log(msg);
     app.send(msg);
   });
 });
