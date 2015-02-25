@@ -1,6 +1,5 @@
 body {
     background: #eee;
-    text-align: center;
     padding: 0 25px;
     font-family: arial, sans-serif;
 }
@@ -69,32 +68,40 @@ form input[type=text] {
 }
 
 .messages {
+    background-color: #fff;
+    width: 600px;
+    margin: 0 auto;
+}
+
+.message {
+    padding: 5px;
+    margin: 5px 0;
     background-color: #ddd;
 }
 
-.spinner {
-    float: right;
-    height: 46px;
-    margin-bottom: 5px;
-}
+/*.spinner {*/
+    /*float: right;*/
+    /*height: 46px;*/
+    /*margin-bottom: 5px;*/
+/*}*/
 
 .spinner img {
     padding: 10px;
 }
 
-.user {
+/*.user {
     float: left;
 
-}
+}*/
 
-.msgText {
+/*.msgText {
     float: right;
-}
+}*/
 
-.time{
+/*.time{
     float: left;
     margin-left: 20px;
-}
+}*/
 
 .roomButton {
     padding: 5px;

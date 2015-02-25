@@ -66,20 +66,24 @@ var app = {
     if (this.rooms[message['roomname']].indexOf(message) === -1) {
       this.rooms[message['roomname']].push(message);
     }
-    var msgBox =  $().add("<span>").addClass("message");
+    var msgBox =  $('<div></div>').addClass("message");
     if (message['username'] in this.friends){
       msgBox.addClass("friend");
     }
-    var user = $().add("<span>").addClass("user").text(message['username']);
+    //var user = $().add("<span>").addClass("user").text(message['username']);
+    var user = $('<span class="user"></span>').text(message['username']);
     var context = this;
     user.on('click',function(){
       context.friends[message['username']] = true;
       $(".message:contains('"+message['username']+"')").addClass("friend");
     });
     msgBox.append(user);
-    msgBox.append($().add("<span>").addClass("time").text(message['updatedAt']));
-    msgBox.append($().add("<span>").addClass("msgText").text(message['text']));
-    msgBox.append("<br>");
+    //msgBox.append($().add("<span>").addClass("time").text(message['updatedAt']));
+    var updated = $('<span class="time"></span>').text(message['updatedAt']);
+    msgBox.append(updated);
+    //msgBox.append($().add("<p>").addClass("msgText").text(message['text']));
+    var msgText = $('<p class="msgText"></p>').text(message['text']);
+    msgBox.append(msgText);
     $(".messages").append(msgBox);
   },
   readMessages: function(messageObj, addRoom) {
