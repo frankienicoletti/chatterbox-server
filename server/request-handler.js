@@ -8,8 +8,9 @@ var actions = {
   },
   'POST': function(request, response) {
     utils.collectData(request, function(message) {
-      data.push(message);
       message.objectId = ++objectId;
+      data.results.push(message);
+      console.log("MESSAGE:", message);
       utils.sendResponse(response, {objectId: objectId});
     });
   },
@@ -28,36 +29,3 @@ module.exports = function(request, response) {
   }
 
 };
-
-
-//var headers = defaultCorsHeaders;
-//
-//headers['Content-Type'] = "text/plain";
-//if ( request.url === "/classes/messages" && request.method === 'POST' ) {
-//  request.on('data', function(chunk) {
-//    console.log(chunk, 'chunk');
-//    text += chunk;
-//  });
-//  console.log(text);
-//
-//  console.log("push", dataTemp.results);
-//  request.on('end', function() {
-//    var decodedBody = querystring.parse(text);
-//    var stringify = JSON.stringify(decodedBody);
-//    console.log("decodeBody", decodedBody);
-//    dataTemp.results.push(decodedBody);
-//    console.log("dataTemp is ", dataTemp);
-//    response.writeHead(201, headers);
-//    response.write(stringify);
-//    response.end();
-//  });
-//} else if (request.url === "/classes/messages") {
-//  response.writeHead(200, headers);
-//  console.log("dataTemp is ", dataTemp);
-//  response.write(JSON.stringify(dataTemp));
-//  response.end();
-//} else if (request.url !== "/classes/messages") {
-//  console.log("404");
-//  response.statusCode = 404;
-//  response.end();
-//}
