@@ -45,6 +45,11 @@ body {
     line-height: 13px;
 }
 
+.container {
+    width: 500px;
+    margin: 0 auto;
+}
+
 form {
     padding: 20px;
     padding-left: 0;
@@ -64,8 +69,6 @@ form input[type=text] {
     background-color: #eee;
 }
 
-.messages{
-}
 
 .messages {
     background-color: #fff;
@@ -74,9 +77,15 @@ form input[type=text] {
 }
 
 .message {
-    padding: 5px;
+    padding: 10px 15px;
     margin: 5px 0;
     background-color: #ddd;
+}
+
+.message:hover {
+    padding: 10px 15px;
+    margin: 5px 0;
+    background-color: #fff;
 }
 
 /*.spinner {*/
@@ -89,19 +98,20 @@ form input[type=text] {
     padding: 10px;
 }
 
-/*.user {
-    float: left;
+.user {
+    font-weight: bold;
+    color: #26ADE4;
+}
 
-}*/
+.msgText {
+    margin: 3px 5px;
+}
 
-/*.msgText {
-    float: right;
-}*/
-
-/*.time{
-    float: left;
+.time{
     margin-left: 20px;
-}*/
+    font-style: italic;
+    font-size: 0.9em;
+}
 
 .roomButton {
     padding: 5px;
